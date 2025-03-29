@@ -1,0 +1,6 @@
+My full access token:
+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
+
+
+Millis full accsess token for project only for 90 day (26.03.2025):
+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
