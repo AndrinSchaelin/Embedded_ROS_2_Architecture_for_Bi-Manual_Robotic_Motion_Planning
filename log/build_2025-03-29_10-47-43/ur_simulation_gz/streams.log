@@ -1,0 +1,51 @@
+[0.012s] Invoking command in '/home/aschalin/UR5e_Assembly_of_Wooden_Pieces/build/ur_simulation_gz': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/aschalin/ws_moveit/install/moveit_configs_utils:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/aschalin/UR5e_Assembly_of_Wooden_Pieces/src/robots/ur_simulation_gz/ur_simulation_gz -DCMAKE_INSTALL_PREFIX=/home/aschalin/UR5e_Assembly_of_Wooden_Pieces/install/ur_simulation_gz
+[0.114s] -- The C compiler identification is GNU 13.3.0
+[0.190s] -- The CXX compiler identification is GNU 13.3.0
+[0.207s] -- Detecting C compiler ABI info
+[0.294s] -- Detecting C compiler ABI info - done
+[0.300s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.301s] -- Detecting C compile features
+[0.301s] -- Detecting C compile features - done
+[0.311s] -- Detecting CXX compiler ABI info
+[0.396s] -- Detecting CXX compiler ABI info - done
+[0.401s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.401s] -- Detecting CXX compile features
+[0.402s] -- Detecting CXX compile features - done
+[0.412s] -- Found ament_cmake: 2.5.3 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.549s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+[0.679s] -- Found launch_testing_ament_cmake: 3.4.3 (/opt/ros/jazzy/share/launch_testing_ament_cmake/cmake)
+[0.683s] -- Found python_cmake_module: 0.11.1 (/opt/ros/jazzy/share/python_cmake_module/cmake)
+[0.788s] -- Found PythonExtra: /usr/bin/python3  
+[0.792s] -- Found ament_cmake_pytest: 2.5.3 (/opt/ros/jazzy/share/ament_cmake_pytest/cmake)
+[1.128s] -- Configuring done (1.1s)
+[1.130s] -- Generating done (0.0s)
+[1.131s] -- Build files have been written to: /home/aschalin/UR5e_Assembly_of_Wooden_Pieces/build/ur_simulation_gz
+[1.134s] Invoked command in '/home/aschalin/UR5e_Assembly_of_Wooden_Pieces/build/ur_simulation_gz' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/aschalin/ws_moveit/install/moveit_configs_utils:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/aschalin/UR5e_Assembly_of_Wooden_Pieces/src/robots/ur_simulation_gz/ur_simulation_gz -DCMAKE_INSTALL_PREFIX=/home/aschalin/UR5e_Assembly_of_Wooden_Pieces/install/ur_simulation_gz
+[1.136s] Invoking command in '/home/aschalin/UR5e_Assembly_of_Wooden_Pieces/build/ur_simulation_gz': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/aschalin/ws_moveit/install/moveit_configs_utils:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/aschalin/UR5e_Assembly_of_Wooden_Pieces/build/ur_simulation_gz -- -j22 -l22
+[1.172s] Invoked command in '/home/aschalin/UR5e_Assembly_of_Wooden_Pieces/build/ur_simulation_gz' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/aschalin/ws_moveit/install/moveit_configs_utils:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/aschalin/UR5e_Assembly_of_Wooden_Pieces/build/ur_simulation_gz -- -j22 -l22
+[1.173s] Invoking command in '/home/aschalin/UR5e_Assembly_of_Wooden_Pieces/build/ur_simulation_gz': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/aschalin/ws_moveit/install/moveit_configs_utils:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/aschalin/UR5e_Assembly_of_Wooden_Pieces/build/ur_simulation_gz
+[1.178s] -- Install configuration: ""
+[1.178s] -- Installing: /home/aschalin/UR5e_Assembly_of_Wooden_Pieces/install/ur_simulation_gz/share/ur_simulation_gz/config
+[1.178s] -- Installing: /home/aschalin/UR5e_Assembly_of_Wooden_Pieces/install/ur_simulation_gz/share/ur_simulation_gz/config/ur_controllers.yaml
+[1.178s] -- Installing: /home/aschalin/UR5e_Assembly_of_Wooden_Pieces/install/ur_simulation_gz/share/ur_simulation_gz/launch
+[1.178s] -- Installing: /home/aschalin/UR5e_Assembly_of_Wooden_Pieces/install/ur_simulation_gz/share/ur_simulation_gz/launch/ur_sim_moveit.launch.py
+[1.178s] -- Installing: /home/aschalin/UR5e_Assembly_of_Wooden_Pieces/install/ur_simulation_gz/share/ur_simulation_gz/launch/ur_sim_control.launch.py
+[1.179s] -- Installing: /home/aschalin/UR5e_Assembly_of_Wooden_Pieces/install/ur_simulation_gz/share/ur_simulation_gz/urdf
+[1.179s] -- Installing: /home/aschalin/UR5e_Assembly_of_Wooden_Pieces/install/ur_simulation_gz/share/ur_simulation_gz/urdf/ur_gz.urdf.xacro
+[1.179s] -- Installing: /home/aschalin/UR5e_Assembly_of_Wooden_Pieces/install/ur_simulation_gz/share/ur_simulation_gz/urdf/ur_gz.ros2_control.xacro
+[1.179s] -- Installing: /home/aschalin/UR5e_Assembly_of_Wooden_Pieces/install/ur_simulation_gz/share/ament_index/resource_index/package_run_dependencies/ur_simulation_gz
+[1.179s] -- Installing: /home/aschalin/UR5e_Assembly_of_Wooden_Pieces/install/ur_simulation_gz/share/ament_index/resource_index/parent_prefix_path/ur_simulation_gz
+[1.179s] -- Installing: /home/aschalin/UR5e_Assembly_of_Wooden_Pieces/install/ur_simulation_gz/share/ur_simulation_gz/environment/ament_prefix_path.sh
+[1.179s] -- Installing: /home/aschalin/UR5e_Assembly_of_Wooden_Pieces/install/ur_simulation_gz/share/ur_simulation_gz/environment/ament_prefix_path.dsv
+[1.179s] -- Installing: /home/aschalin/UR5e_Assembly_of_Wooden_Pieces/install/ur_simulation_gz/share/ur_simulation_gz/environment/path.sh
+[1.179s] -- Installing: /home/aschalin/UR5e_Assembly_of_Wooden_Pieces/install/ur_simulation_gz/share/ur_simulation_gz/environment/path.dsv
+[1.179s] -- Installing: /home/aschalin/UR5e_Assembly_of_Wooden_Pieces/install/ur_simulation_gz/share/ur_simulation_gz/local_setup.bash
+[1.179s] -- Installing: /home/aschalin/UR5e_Assembly_of_Wooden_Pieces/install/ur_simulation_gz/share/ur_simulation_gz/local_setup.sh
+[1.179s] -- Installing: /home/aschalin/UR5e_Assembly_of_Wooden_Pieces/install/ur_simulation_gz/share/ur_simulation_gz/local_setup.zsh
+[1.179s] -- Installing: /home/aschalin/UR5e_Assembly_of_Wooden_Pieces/install/ur_simulation_gz/share/ur_simulation_gz/local_setup.dsv
+[1.179s] -- Installing: /home/aschalin/UR5e_Assembly_of_Wooden_Pieces/install/ur_simulation_gz/share/ur_simulation_gz/package.dsv
+[1.179s] -- Installing: /home/aschalin/UR5e_Assembly_of_Wooden_Pieces/install/ur_simulation_gz/share/ament_index/resource_index/packages/ur_simulation_gz
+[1.179s] -- Installing: /home/aschalin/UR5e_Assembly_of_Wooden_Pieces/install/ur_simulation_gz/share/ur_simulation_gz/cmake/ur_simulation_gzConfig.cmake
+[1.179s] -- Installing: /home/aschalin/UR5e_Assembly_of_Wooden_Pieces/install/ur_simulation_gz/share/ur_simulation_gz/cmake/ur_simulation_gzConfig-version.cmake
+[1.179s] -- Installing: /home/aschalin/UR5e_Assembly_of_Wooden_Pieces/install/ur_simulation_gz/share/ur_simulation_gz/package.xml
+[1.180s] Invoked command in '/home/aschalin/UR5e_Assembly_of_Wooden_Pieces/build/ur_simulation_gz' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/aschalin/ws_moveit/install/moveit_configs_utils:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/aschalin/UR5e_Assembly_of_Wooden_Pieces/build/ur_simulation_gz
