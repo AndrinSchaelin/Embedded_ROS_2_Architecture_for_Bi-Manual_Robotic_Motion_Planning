@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:macro name="table" params="parent *origin">
+    <joint name="table_base_joint" type="fixed">
+      <xacro:insert_block name="origin"/>
+      <parent link="${parent}" />
+      <child link="table" />
+    </joint>
+
+    <link name="table">
+      <visual>
+        <geometry>
+          <box size="1.2 0.8 0.9"/>
+        </geometry>
+        <origin rpy="0 0 0" xyz="0 0 -0.45"/>
+        <material name="black">
+          <color rgba="0.2 0.2 0.2 1.0"/>
+        </material>
+      </visual>
+      <collision>
+        <geometry>
+          <box size="1.2 0.8 0.9"/>
+        </geometry>
+        <origin rpy="0 0 0" xyz="0 0 -0.45"/>
+      </collision>
+      <inertial>
+        <mass value="40.0"/>
+        <inertia
+        ixx="1.0" ixy="0.0" ixz="0.0"
+        iyy="1.0" iyz="0.0"
+        izz="1.0"/>
+      </inertial>
+    </link>
+  </xacro:macro>
+</robot> 
