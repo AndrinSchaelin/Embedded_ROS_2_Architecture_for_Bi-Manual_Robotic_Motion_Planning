@@ -4,8 +4,11 @@ from launch.conditions import IfCondition
 from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch_ros.substitutions import FindPackageShare
+from launch_ros.actions import Node
+from ament_index_python.packages import get_package_share_directory
 from moveit_configs_utils import MoveItConfigsBuilder
 from moveit_configs_utils.launches import generate_move_group_launch, generate_moveit_rviz_launch
+import os
 
 
 def generate_launch_description():
@@ -62,8 +65,30 @@ def generate_launch_description():
         }.items(),
     )
 
-    # Configure MoveIt
-    moveit_config = MoveItConfigsBuilder("my_robot_cell", package_name="my_robot_cell_moveit2_config").to_moveit_configs()
+    # Configure MoveIt (old one without motion planning python api)
+    #moveit_config = MoveItConfigsBuilder("my_robot_cell", package_name="my_robot_cell_moveit2_config").to_moveit_configs()
+
+    # Get MoveIt configuration
+    moveit_config = (
+        MoveItConfigsBuilder("my_robot_cell", package_name="my_robot_cell_moveit2_config")
+        .moveit_cpp(
+            file_path=os.path.join(
+                get_package_share_directory("motion_planning"),
+                "config",
+                "motion_planning_python_api.yaml"
+            )
+        )
+        .to_moveit_configs()
+    )
+
+    # Create the motion planning Python API node
+    moveit_py_node = Node(
+        name="moveit_py",
+        executable="python3",
+        arguments=[os.path.join(get_package_share_directory("motion_planning"), "scripts", "motion_planning_python_api.py")],
+        output="screen",
+        parameters=[moveit_config.to_dict()]
+    )
 
     # Include move_group launch
     move_group = generate_move_group_launch(moveit_config)
@@ -77,5 +102,6 @@ def generate_launch_description():
             robot_control,
             move_group,
             moveit_rviz,
+            moveit_py_node,
         ]
     ) 
