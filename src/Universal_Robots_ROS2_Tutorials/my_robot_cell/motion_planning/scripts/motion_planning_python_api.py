@@ -14,7 +14,6 @@ from moveit.core.robot_state import RobotState
 from moveit.planning import (
     MoveItPy,
     MultiPipelinePlanRequestParameters,
-    PlanRequestParameters,
 )
 
 
@@ -84,10 +83,7 @@ def main():
     logger.info("Planning to custom pose goal")
     ur_arm.set_goal_state(pose_stamped_msg=pose_goal, pose_link="ur5e_tool0")
 
-    # Use the custom pose planning parameters from the YAML file
-    plan_and_execute(ur5e, ur_arm, logger, multi_plan_parameters=MultiPipelinePlanRequestParameters(
-        pipeline_name="custom_pose_planning"
-    ), sleep_time=3.0)
+    plan_and_execute(ur5e, ur_arm, logger, sleep_time=3.0)
 
     ###########################################################################
     # Plan 2 – Move to 'home' state
