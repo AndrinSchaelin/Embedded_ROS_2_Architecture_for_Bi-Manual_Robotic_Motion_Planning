@@ -14,6 +14,7 @@ from moveit.core.robot_state import RobotState
 from moveit.planning import (
     MoveItPy,
     MultiPipelinePlanRequestParameters,
+    PlanRequestParameters,
 )
 
 
@@ -43,7 +44,7 @@ def plan_and_execute(
     if plan_result:
         logger.info("Executing plan")
         robot_trajectory = plan_result.trajectory
-        robot.execute(robot_trajectory, controllers=[])
+        robot.execute(robot_trajectory, controllers=["scaled_joint_trajectory_controller"])
     else:
         logger.error("Planning failed")
 
@@ -51,7 +52,11 @@ def plan_and_execute(
 
 
 def main():
+    # Wait to ensure RViz and other ROS nodes are fully up
+    print("Waiting 5 seconds for RViz and MoveGroup to initialize...")
+    time.sleep(10)
 
+    
     ###################################################################
     # MoveItPy Setup
     ###################################################################
@@ -64,111 +69,43 @@ def main():
     logger.info("MoveItPy instance created")
 
     ###########################################################################
-    # Plan 1 - set states with predefined string
+    # Plan 1 – From current state to custom pose
     ###########################################################################
-
-    # set plan start state using predefined state
-    ur_arm.set_start_state(configuration_name="home")
-
-    # set pose goal using predefined state
-    ur_arm.set_goal_state(configuration_name="extended")
-
-    # plan to goal
-    plan_and_execute(ur5e, ur_arm, logger, sleep_time=3.0)
-
-    ###########################################################################
-    # Plan 2 - set goal state with RobotState object
-    ###########################################################################
-
-    # instantiate a RobotState instance using the current robot model
-    robot_model = ur5e.get_robot_model()
-    robot_state = RobotState(robot_model)
-
-    # randomize the robot state
-    robot_state.set_to_random_positions()
-
-    # set plan start state to current state
-    ur_arm.set_start_state_to_current_state()
-
-    # set goal state to the initialized robot state
-    logger.info("Set goal state to the initialized robot state")
-    ur_arm.set_goal_state(robot_state=robot_state)
-
-    # plan to goal
-    plan_and_execute(ur5e, ur_arm, logger, sleep_time=3.0)
-
-    ###########################################################################
-    # Plan 3 - set goal state with PoseStamped message
-    ###########################################################################
-
-    # set plan start state to current state
-    ur_arm.set_start_state_to_current_state()
-
-    # set pose goal with PoseStamped message
     from geometry_msgs.msg import PoseStamped
+
+    ur_arm.set_start_state_to_current_state()
 
     pose_goal = PoseStamped()
     pose_goal.header.frame_id = "ur5e_base_link"
     pose_goal.pose.orientation.w = 1.0
-    pose_goal.pose.position.x = 0.3
-    pose_goal.pose.position.y = 0.0
+    pose_goal.pose.position.x = -0.4
+    pose_goal.pose.position.y = 0.3
     pose_goal.pose.position.z = 0.3
+    logger.info("Planning to custom pose goal")
     ur_arm.set_goal_state(pose_stamped_msg=pose_goal, pose_link="ur5e_tool0")
 
-    # plan to goal
-    plan_and_execute(ur5e, ur_arm, logger, sleep_time=3.0)
+    # Use the custom pose planning parameters from the YAML file
+    plan_and_execute(ur5e, ur_arm, logger, multi_plan_parameters=MultiPipelinePlanRequestParameters(
+        pipeline_name="custom_pose_planning"
+    ), sleep_time=3.0)
 
     ###########################################################################
-    # Plan 4 - set goal state with constraints
+    # Plan 2 – Move to 'home' state
     ###########################################################################
-
-    # set plan start state to current state
     ur_arm.set_start_state_to_current_state()
-
-    # set constraints message
-    from moveit.core.kinematic_constraints import construct_joint_constraint
-
-    joint_values = {
-        "ur5e_shoulder_pan_joint": 0.0,
-        "ur5e_shoulder_lift_joint": -1.57,
-        "ur5e_elbow_joint": 0.0,
-        "ur5e_wrist_1_joint": -1.57,
-        "ur5e_wrist_2_joint": 0.0,
-        "ur5e_wrist_3_joint": 0.0,
-    }
-    robot_state.joint_positions = joint_values
-    joint_constraint = construct_joint_constraint(
-        robot_state=robot_state,
-        joint_model_group=ur5e.get_robot_model().get_joint_model_group("ur_arm"),
-    )
-    ur_arm.set_goal_state(motion_plan_constraints=[joint_constraint])
-
-    # plan to goal
-    plan_and_execute(ur5e, ur_arm, logger, sleep_time=3.0)
-
-    ###########################################################################
-    # Plan 5 - Planning with Multiple Pipelines simultaneously
-    ###########################################################################
-
-    # set plan start state to current state
-    ur_arm.set_start_state_to_current_state()
-
-    # set pose goal with PoseStamped message
+    logger.info("Planning to 'home' position")
     ur_arm.set_goal_state(configuration_name="home")
 
-    # initialise multi-pipeline plan request parameters
-    multi_pipeline_plan_request_params = MultiPipelinePlanRequestParameters(
-        ur5e, ["ompl_rrtc", "pilz_lin", "chomp_planner"]
-    )
+    plan_and_execute(ur5e, ur_arm, logger, sleep_time=3.0)
 
-    # plan to goal
-    plan_and_execute(
-        ur5e,
-        ur_arm,
-        logger,
-        multi_plan_parameters=multi_pipeline_plan_request_params,
-        sleep_time=3.0,
-    )
+    ###########################################################################
+    # Plan 3 – Move to 'extended' state
+    ###########################################################################
+    ur_arm.set_start_state_to_current_state()
+    logger.info("Planning to 'extended' position")
+    ur_arm.set_goal_state(configuration_name="extended")
+
+    plan_and_execute(ur5e, ur_arm, logger, sleep_time=3.0)
 
 
 if __name__ == "__main__":
