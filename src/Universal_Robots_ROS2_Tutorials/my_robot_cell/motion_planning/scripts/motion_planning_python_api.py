@@ -76,14 +76,23 @@ def main():
 
     pose_goal = PoseStamped()
     pose_goal.header.frame_id = "ur5e_base_link"
-    pose_goal.pose.orientation.w = 1.0
-    pose_goal.pose.position.x = -0.4
-    pose_goal.pose.position.y = 0.5
-    pose_goal.pose.position.z = 0.3
+    pose_goal.pose.orientation.w = 0.7071
+    pose_goal.pose.orientation.x = 0.0
+    pose_goal.pose.orientation.y = -0.7071
+    pose_goal.pose.orientation.z = 0.0
+    # Define the pose goal
+
+    pose_goal.pose.position.x = -0.2
+    pose_goal.pose.position.y = 0.2
+    pose_goal.pose.position.z = 0.8
     logger.info("Planning to custom pose goal")
     ur_arm.set_goal_state(pose_stamped_msg=pose_goal, pose_link="ur5e_tool0")
 
-    plan_and_execute(ur5e, ur_arm, logger, sleep_time=3.0)
+    # Create multi-pipeline plan request parameters using configurations from YAML
+    pipeline_names = ["ompl", "pilz_industrial_motion_planner", "chomp"]
+    multi_plan_parameters = MultiPipelinePlanRequestParameters(ur5e, pipeline_names)
+
+    plan_and_execute(ur5e, ur_arm, logger, multi_plan_parameters=multi_plan_parameters, sleep_time=3.0)
 
     ###########################################################################
     # Plan 2 – Move to 'home' state

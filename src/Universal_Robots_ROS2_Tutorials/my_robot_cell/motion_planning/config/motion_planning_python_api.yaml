@@ -16,25 +16,16 @@ plan_request_params:
   max_velocity_scaling_factor: 0.5
   max_acceleration_scaling_factor: 0.5
 
-ompl_rrtc:  # Namespace for individual plan request
-  plan_request_params:  # PlanRequestParameters similar to the ones that are used by the single pipeline planning of moveit_cpp
-    planning_attempts: 10  # Number of attempts the planning pipeline tries to solve a given motion planning problem
-    planning_pipeline: ompl  # Name of the pipeline that is being used
-    planner_id: "RRTConnectkConfigDefault"  # Name of the specific planner to be used by the pipeline
-    max_velocity_scaling_factor: 0.5  # Velocity scaling parameter for the trajectory generation algorithm that is called (if configured) after the path planning
-    max_acceleration_scaling_factor: 0.5  # Acceleration scaling parameter for the trajectory generation algorithm that is called (if configured) after the path planning
-    planning_time: 1.0  # Time budget for the motion plan request. If the planning problem cannot be solved within this time, an empty solution with error code is returned
-
-custom_pose_planning:  # New section for custom pose planning
+ompl:
   plan_request_params:
     planning_attempts: 10
     planning_pipeline: ompl
     planner_id: "RRTConnectkConfigDefault"
     max_velocity_scaling_factor: 0.5
     max_acceleration_scaling_factor: 0.5
-    planning_time: 2.0
+    planning_time: 3.0
 
-pilz_lin:
+pilz_industrial_motion_planner:
   plan_request_params:
     planning_attempts: 1
     planning_pipeline: pilz_industrial_motion_planner
@@ -43,7 +34,7 @@ pilz_lin:
     max_acceleration_scaling_factor: 0.5
     planning_time: 0.8
 
-chomp_planner:
+chomp:
   plan_request_params:
     planning_attempts: 1
     planning_pipeline: chomp
