@@ -44,7 +44,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: ${{ inputs.ref_for_scheduled_build }}
-      - run: docker network create --subnet=192.168.1.0/24 ursim_net
+      - run: docker network create --subnet=192.168.56.0/24 ursim_net
       - uses: 'ros-industrial/industrial_ci@master'
         env:
           UPSTREAM_WORKSPACE: ${{ inputs.upstream_workspace }}
