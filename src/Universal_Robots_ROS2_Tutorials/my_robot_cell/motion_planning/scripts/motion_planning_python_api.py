@@ -4,6 +4,7 @@ import rclpy
 from rclpy.node import Node
 from rclpy.logging import get_logger
 from geometry_msgs.msg import PoseStamped
+import time
 
 from moveit.core.robot_state import RobotState
 from moveit.planning import MoveItPy, MultiPipelinePlanRequestParameters
@@ -38,20 +39,43 @@ class PoseGoalPlanner(Node):
             self.arm.set_start_state_to_current_state()
             self.arm.set_goal_state(pose_stamped_msg=msg, pose_link="ur5e_tool0")
 
-            # Use multiple planners
-            multi_planners = MultiPipelinePlanRequestParameters(
-                self.moveit,
-                ["ompl_rrtc", "pilz_lin", "chomp_planner"]  # must match those in your YAML config
-            )
+            # Define planners to try in order
+            planners = ["ompl_rrtc", "pilz_lin", "chomp_planner"]
+            max_attempts = 3
+            success = False
 
-            self.logger.info("Planning with multiple pipelines...")
-            plan_result = self.arm.plan(multi_plan_parameters=multi_planners)
+            for attempt in range(max_attempts):
+                self.logger.info(f"Planning attempt {attempt + 1} of {max_attempts}")
+                
+                # Try each planner
+                for planner in planners:
+                    try:
+                        self.logger.info(f"Trying planner: {planner}")
+                        # Create plan parameters
+                        plan_parameters = MultiPipelinePlanRequestParameters(
+                            self.moveit,
+                            [planner]
+                        )
+                        plan_result = self.arm.plan(multi_plan_parameters=plan_parameters)
 
-            if plan_result:
-                self.logger.info("Planning successful. Executing trajectory...")
-                self.robot.execute(plan_result.trajectory, controllers=[])
-            else:
-                self.logger.error("Planning failed.")
+                        if plan_result:
+                            self.logger.info(f"Planning successful with {planner}. Executing trajectory...")
+                            self.robot.execute(plan_result.trajectory, controllers=[])
+                            success = True
+                            break
+                    except Exception as e:
+                        self.logger.warning(f"Failed with planner {planner}: {e}")
+                        continue
+
+                if success:
+                    break
+                
+                if attempt < max_attempts - 1:
+                    self.logger.info("Waiting before next attempt...")
+                    time.sleep(1.0)  # Wait a bit before next attempt
+
+            if not success:
+                self.logger.error("All planning attempts failed.")
         except Exception as e:
             self.logger.error(f"Exception during planning or execution: {e}")
 
