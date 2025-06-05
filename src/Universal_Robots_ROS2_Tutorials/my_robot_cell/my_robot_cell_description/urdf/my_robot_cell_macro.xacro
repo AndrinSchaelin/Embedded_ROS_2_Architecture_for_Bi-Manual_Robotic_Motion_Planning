@@ -32,8 +32,8 @@
     
     
     <link name="robot_mount"/>
-    <joint name="base_to_robot_mount" type="fixed">
-      <parent link="robot_base_plate"/>
+    <joint name="base_to_robot_mount_409" type="fixed">
+      <parent link="robot_base_plate_409"/>
       <child link="robot_mount"/>
       <origin xyz="0 0 0" rpy="0 0 ${pi}" />
     </joint>
