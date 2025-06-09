@@ -40,8 +40,8 @@
 
     <!--This will create the specific robot-->
     <xacro:ur_robot
-      name="${ur_type}"
-      tf_prefix="${ur_type}_"
+      name="${ur_type}_409"
+      tf_prefix="${ur_type}_409_"
       parent="robot_mount"
       joint_limits_parameters_file="${joint_limits_parameters_file}"
       kinematics_parameters_file="${kinematics_parameters_file}"
@@ -51,7 +51,7 @@
       <origin xyz="0 0 0" rpy="0 0 0" />
     </xacro:ur_robot>
 
-    <xacro:box parent="ur5e_tool0">
+    <xacro:box parent="ur5e_409_tool0">
       <origin xyz="0 0 0.1" rpy="0 0 0"/>
     </xacro:box>
 

@@ -19,7 +19,7 @@ class PoseGoalPlanner(Node):
         self.moveit = MoveItPy(node_name="moveit_py")
         self.robot_model = self.moveit.get_robot_model()
         self.robot = self.moveit
-        self.arm = self.moveit.get_planning_component("ur_arm")
+        self.arm = self.moveit.get_planning_component("ur5e_409_arm")
 
         self.logger.info("MoveItPy and PlanningComponent initialized.")
 
@@ -37,7 +37,7 @@ class PoseGoalPlanner(Node):
         # Plan to the received pose
         try:
             self.arm.set_start_state_to_current_state()
-            self.arm.set_goal_state(pose_stamped_msg=msg, pose_link="ur5e_tool0")
+            self.arm.set_goal_state(pose_stamped_msg=msg, pose_link="ur5e_409_tool0")
 
             # Define planners to try in order
             planners = ["ompl_rrtc", "pilz_lin", "chomp_planner"]
