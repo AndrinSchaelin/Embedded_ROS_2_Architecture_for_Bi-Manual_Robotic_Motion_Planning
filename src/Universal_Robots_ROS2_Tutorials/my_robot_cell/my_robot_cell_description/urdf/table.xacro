@@ -36,13 +36,13 @@
     </link>
 
     <!--For Robot 409-->
-    <joint name="robot_base_plate_joint_409" type="fixed">
+    <joint name="robot_base_plate_joint" type="fixed">
       <parent link="table" />
-      <child link="robot_base_plate_409"/>
+      <child link="robot_base_plate"/>
       <origin rpy="0 0 0" xyz="-0.52 0.32 0.02"/>
     </joint>
 
-    <link name="robot_base_plate_409">
+    <link name="robot_base_plate">
       <visual>
         <geometry>
           <box size="0.16 0.16 0.02"/>
