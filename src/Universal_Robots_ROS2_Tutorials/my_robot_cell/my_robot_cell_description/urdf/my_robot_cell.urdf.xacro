@@ -29,6 +29,7 @@
   <xacro:my_robot_cell
     parent="world"
     ur_type="$(arg ur_type)"
+    prefix="409"
     joint_limits_parameters_file="$(arg joint_limits_parameters_file)"
     kinematics_parameters_file="$(arg kinematics_parameters_file)"
     physical_parameters_file="$(arg physical_parameters_file)"

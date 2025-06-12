@@ -19,7 +19,7 @@ class PoseGoalPlanner(Node):
         self.moveit = MoveItPy(node_name="moveit_py")
         self.robot_model = self.moveit.get_robot_model()
         self.robot = self.moveit
-        self.arm = self.moveit.get_planning_component("ur_arm")
+        self.arm = self.moveit.get_planning_component("409_ur5e_arm")
 
         self.logger.info("MoveItPy and PlanningComponent initialized.")
 

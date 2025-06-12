@@ -4,8 +4,8 @@
     
     
     
-    <joint name="box_joint" type="fixed">
-      <parent link="ur5e_tool0" />
+    <joint name="409_box_joint" type="fixed">
+      <parent link="409_ur5e_tool0" />
       <child link="box" />
       <origin rpy="0 0 0" xyz="0 0 0.16"/>
     </joint>
