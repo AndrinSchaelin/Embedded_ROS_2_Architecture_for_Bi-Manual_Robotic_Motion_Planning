@@ -38,4 +38,7 @@
       <origin xyz="0 0 0" rpy="0 0 0" />
   </xacro:my_robot_cell>
 
+  
+
+  
 </robot>

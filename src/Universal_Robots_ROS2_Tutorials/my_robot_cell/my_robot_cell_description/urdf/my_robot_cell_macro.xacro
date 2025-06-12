@@ -36,7 +36,7 @@
       <origin xyz="0 0 0" rpy="0 0 0" />
     </xacro:ur_robot>
 
-    <xacro:box parent="${prefix}_ur5e_tool0">
+    <xacro:box parent="${prefix}_ur5e_tool0" prefix="${prefix}">
       <origin xyz="0 0 0.1" rpy="0 0 0"/>
     </xacro:box>
 
