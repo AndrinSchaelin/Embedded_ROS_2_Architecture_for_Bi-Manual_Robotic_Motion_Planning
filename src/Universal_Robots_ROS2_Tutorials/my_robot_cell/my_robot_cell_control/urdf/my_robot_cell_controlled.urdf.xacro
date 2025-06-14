@@ -37,6 +37,7 @@
   
   <!--Create the scene description including the robot-->
   <xacro:my_robot_cell
+    angle="${pi}" 
     prefix="409_"
     parent="world"
     ur_type="$(arg ur_type)"
@@ -67,6 +68,7 @@
   />
 
   <xacro:my_robot_cell
+    angle="${pi/2}"
     prefix="410_"
     parent="world"
     ur_type="$(arg ur_type)"

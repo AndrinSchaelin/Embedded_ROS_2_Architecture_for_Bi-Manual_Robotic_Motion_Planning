@@ -6,6 +6,7 @@
   <xacro:include filename="$(find my_robot_cell_description)/urdf/box.xacro"/>
   <xacro:include filename="$(find my_robot_cell_description)/urdf/2fg7_gripper/urdf/onrobot_2fg7_gripper.urdf.xacro"/>
   <xacro:macro name="my_robot_cell" params="
+    angle
     parent
     *origin
     prefix
@@ -22,7 +23,7 @@
     <joint name="${prefix}base_to_robot_mount" type="fixed">
       <parent link="${prefix}robot_base_plate"/>
       <child link="${prefix}robot_mount"/>
-      <origin xyz="0 0 0" rpy="0 0 ${pi}" />
+      <origin xyz="0 0 0" rpy="0 0 ${angle}" />
     </joint>
 
     <!--This will create the specific robot-->
