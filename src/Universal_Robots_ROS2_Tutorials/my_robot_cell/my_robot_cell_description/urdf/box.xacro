@@ -1,16 +1,16 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
-  <xacro:macro name="box" params="parent prefix *origin">
+  <xacro:macro name="box" params="parent *origin">
     
     
     
-    <joint name="${prefix}_box_joint" type="fixed">
-      <parent link="${prefix}_ur5e_tool0" />
-      <child link="${prefix}_box" />
+    <joint name="${prefix}box_joint" type="fixed">
+      <parent link="${prefix}ur5e_tool0" />
+      <child link="${prefix}box" />
       <origin rpy="0 0 0" xyz="0 0 0.16"/>
     </joint>
 
-    <link name="${prefix}_box">
+    <link name="${prefix}box">
       <visual>
         <geometry>
           <box size="0.1 0.1 0.16"/>

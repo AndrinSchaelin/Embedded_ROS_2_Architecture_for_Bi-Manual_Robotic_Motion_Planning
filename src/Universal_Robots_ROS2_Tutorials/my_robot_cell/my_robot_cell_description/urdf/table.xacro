@@ -5,7 +5,7 @@
     
     
     <joint name="table_base_joint" type="fixed">
-      <parent link="${parent}" />
+      <parent link="world" />
       <child link="table" />
       <origin rpy="0 0 0" xyz="0 0 0.9"/>
     </joint>
@@ -66,8 +66,6 @@
         izz="1.0"/>
       </inertial>
     </link>
-
-
 
 
     <joint name="410_robot_base_plate_joint" type="fixed">

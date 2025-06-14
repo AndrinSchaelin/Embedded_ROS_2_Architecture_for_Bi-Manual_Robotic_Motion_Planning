@@ -117,6 +117,13 @@ def generate_launch_description():
                         ]
                     ),
                     "use_mock_hardware": use_mock_hardware,
+                    "controllers_file": PathJoinSubstitution(
+                        [
+                            FindPackageShare("my_robot_cell_control"),
+                            "config",
+                            "409_controllers.yaml",
+                        ]
+                    ),
                 }.items(),
             ),
             # Launch MoveGroup
@@ -150,4 +157,4 @@ def generate_launch_description():
             # Add the motion planning Python API node
             moveit_py_node,
         ]
-    ) 
+    )
