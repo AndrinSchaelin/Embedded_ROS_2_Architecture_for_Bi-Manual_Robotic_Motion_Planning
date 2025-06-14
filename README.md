@@ -30,20 +30,24 @@ source $COLCON_WS/install/setup.bash
 ```
 
 
-###Installing this repository
+### Installing this repository
 
+Clone this repository with this command:
+
+```
 git clone https://github.com/AndrinSchaelin/UR5e_Assembly_of_Wooden_Pieces.git
+```
 
-Go into the workspace and build it with:
+
+Navigate into this workspace and build it with:
 
 ```
 colcon build
 ```
 
 
-This might take a few seconds. 
+Building the workspace might take a few seconds. Afterwards source it with:
 
-Source the workspace with:
 
 ```
 source install/setup.bash
