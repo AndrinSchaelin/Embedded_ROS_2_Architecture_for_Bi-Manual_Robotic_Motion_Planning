@@ -11,3 +11,5 @@ This repository includes Bi-Manual robot control with motion planning using ROS 
 ## Installation
 ###ROS Jazzy installation 
 
+https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debs.html
+
