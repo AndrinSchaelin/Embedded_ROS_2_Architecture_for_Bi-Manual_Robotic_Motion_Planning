@@ -27,7 +27,28 @@ source $COLCON_WS/install/setup.bash
 
 ###Installing this repository
 
-git clone 
+git clone https://github.com/AndrinSchaelin/UR5e_Assembly_of_Wooden_Pieces.git
+
+Go into the workspace and build it with:
+
+colcon build
+
+This might take a few seconds. 
+
+Source the workspace with:
+
+source install/setup.bash
+
+Now you are ready to go! You can launch both robots in simulation with 
+
+ros2 launch my_robot_cell_control dual_robot.launch.py use_mock_hardware:=true
+
+or on two real UR5e with:
+
+ros2 launch my_robot_cell_control dual_robot.launch.py use_mock_hardware:=false
+
+
+
 
 
 
