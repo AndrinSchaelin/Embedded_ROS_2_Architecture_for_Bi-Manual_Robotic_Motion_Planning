@@ -23,7 +23,7 @@ class PoseGoalPublisher(Node):
         # --- State Variables ---
         self.is_waiting_for_result = False
         self.counter = 0
-        self.total_poses = 8  # Updated to include gripper open step
+        self.total_poses = 9  # Fixed: Steps 0-8 = 9 total steps
 
         # The timer drives the sequence execution
         timer_period = 2.0  # Reduced timer period for more responsive checking
@@ -61,7 +61,7 @@ class PoseGoalPublisher(Node):
         request.state = 1.0  # Close gripper (set to 1)
 
         future = self.gripper_client.call_async(request)
-        future.add_done_callback(self.gripper_response_callback)
+        future.add_done_callback(lambda f: self.gripper_response_callback(f, "close"))
 
     def open_gripper(self):
         """Call the service to open the gripper."""
@@ -78,16 +78,16 @@ class PoseGoalPublisher(Node):
         request.state = 0.0  # Open gripper (set to 0)
 
         future = self.gripper_client.call_async(request)
-        future.add_done_callback(self.gripper_response_callback)
+        future.add_done_callback(lambda f: self.gripper_response_callback(f, "open"))
 
-    def gripper_response_callback(self, future):
+    def gripper_response_callback(self, future, operation):
         """Handle the gripper service response."""
         try:
             response = future.result()
             if response.success:
-                self.get_logger().info("✅ Gripper closed successfully!")
+                self.get_logger().info(f"✅ Gripper {operation}ed successfully!")
             else:
-                self.get_logger().error("❌ Failed to close gripper!")
+                self.get_logger().error(f"❌ Failed to {operation} gripper!")
             
             # Move to next step regardless of gripper result
             self.counter += 1
@@ -172,7 +172,7 @@ class PoseGoalPublisher(Node):
             self.get_logger().info(f"📍 Executing pose {self.counter + 1}/{self.total_poses}: Robot 410 to position (-0.10, -0.10, 0.27)")
             msg.pose.position.x = 0.20
             msg.pose.position.y = -0.20
-            msg.pose.position.z = 0.27
+            msg.pose.position.z = 0.6
             msg.pose.orientation.x = 1.0
             msg.pose.orientation.y = 0.0
             msg.pose.orientation.z = 0.0
@@ -182,8 +182,8 @@ class PoseGoalPublisher(Node):
 
         elif self.counter == 6:
             self.get_logger().info(f"📍 Executing pose {self.counter + 1}/{self.total_poses}: Robot 409 to position (-0.3, -0.3, 0.27)")
-            msg.pose.position.x = -0.4
-            msg.pose.position.y = -0.15
+            msg.pose.position.x = 0.1
+            msg.pose.position.y = -0.2
             msg.pose.position.z = 0.4
             msg.pose.orientation.x = 1.0
             msg.pose.orientation.y = 0.0
@@ -196,8 +196,8 @@ class PoseGoalPublisher(Node):
 
         elif self.counter == 7:
             self.get_logger().info(f"📍 Executing pose {self.counter + 1}/{self.total_poses}: Robot 409 to position (-0.3, -0.3, 0.27)")
-            msg.pose.position.x = -0.4
-            msg.pose.position.y = -0.15
+            msg.pose.position.x = 0.1
+            msg.pose.position.y = -0.2
             msg.pose.position.z = 0.22
             msg.pose.orientation.x = 1.0
             msg.pose.orientation.y = 0.0

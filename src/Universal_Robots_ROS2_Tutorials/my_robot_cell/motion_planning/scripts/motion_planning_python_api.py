@@ -45,13 +45,6 @@ class MotionPlannerNode(Node):
         self.robot_model = self.ur5e.get_robot_model()
         self.robot_state = RobotState(self.robot_model)
         
-        # Set both robots to home position
-        # self.ur_arm_409.set_goal_state(configuration_name="home")
-        # self.ur_arm_409.set_start_state_to_current_state()
-        
-        # self.ur_arm_410.set_goal_state(configuration_name="home")
-        # self.ur_arm_410.set_start_state_to_current_state()
-        
         time.sleep(2.0)
 
     def robot_select_callback(self, msg):
@@ -102,13 +95,14 @@ class MotionPlannerNode(Node):
             arm.set_start_state_to_current_state()
             arm.set_goal_state(pose_stamped_msg=pose_msg, pose_link=tool_frame)
 
-            # Plan using both planners
+            # Plan using both planners - these already include collision checking
             plan_params = MultiPipelinePlanRequestParameters(self.ur5e, ["ompl_rrtc", "pilz_lin"])
             plan_result = arm.plan(multi_plan_parameters=plan_params)
 
             if plan_result:
-                self.get_logger().info("Plan found, executing...")
                 robot_trajectory = plan_result.trajectory
+                
+                self.get_logger().info("Plan found, executing...")
                 
                 # Execute the trajectory
                 success = self.ur5e.execute(robot_trajectory, controllers=[])
@@ -120,7 +114,7 @@ class MotionPlannerNode(Node):
                     self.get_logger().error("Execution failed")
                     return False
             else:
-                self.get_logger().warn("No valid plan found")
+                self.get_logger().warn("No valid plan found - may be due to collision detection or unreachable goal")
                 return False
         
         except Exception as e:
