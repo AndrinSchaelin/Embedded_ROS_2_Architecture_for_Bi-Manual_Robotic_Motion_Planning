@@ -24,7 +24,7 @@
   
   
   <xacro:my_robot_cell
-    angle="${pi}"
+    rotation="0 0 0"
     parent="world"
     prefix="409_"
     ur_type="$(arg ur_type)"
@@ -37,7 +37,7 @@
   </xacro:my_robot_cell>
 
   <xacro:my_robot_cell
-    angle="${pi/2}"
+    rotation="0 0  -${pi/2}"
     parent="world"
     prefix="410_"
     ur_type="$(arg ur_type)"
