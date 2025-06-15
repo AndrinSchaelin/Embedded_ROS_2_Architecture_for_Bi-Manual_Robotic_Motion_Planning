@@ -292,13 +292,13 @@ def generate_launch_description():
         ],
     )
 
-    # Motion Planning Python API Node
-    motion_planning_node = Node(
-        name="motion_planner_node",
-        executable="python3",
-        arguments=[os.path.join(get_package_share_directory("motion_planning"), "scripts", "motion_planning_python_api.py")],
+    # Create the motion planning Python API node
+    moveit_py_node = Node(
+        name="moveit_py",
+        package="motion_planning",
+        executable="motion_planning_python_api.py",
         output="screen",
-        parameters=[moveit_config.to_dict()],
+        parameters=[moveit_config.to_dict()]
     )
 
     # Create the launch description
@@ -319,6 +319,6 @@ def generate_launch_description():
             controller_spawner_410,
             move_group_node,
             rviz_node,
-            motion_planning_node,
+            moveit_py_node,
         ]
     )

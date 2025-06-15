@@ -30,7 +30,7 @@ class MotionPlannerNode(Node):
         self.active_robot = "409"
         
         # Allow MoveIt to initialize
-        time.sleep(10.0)
+        time.sleep(5.0)
 
         # Set default start states
         self.robot_model = self.ur5e.get_robot_model()
