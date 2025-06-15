@@ -29,8 +29,8 @@ class CoordinatedPickPlaceMaster(Node):
         # Define the coordinated sequence
         self.sequence_actions = [
             # Phase 1: Robot 410 approaches object
-            {"action": "move", "robot": "410", "pose": [-0.20, -0.20, 0.25], "description": "410: Move to pre-pick position"},
-            {"action": "move", "robot": "410", "pose": [-0.20, -0.20, 0.08], "description": "410: Move down to object"},
+            {"action": "move", "robot": "410", "pose": [-0.20, -0.20, 0.30], "description": "410: Move to pre-pick position"},
+            {"action": "move", "robot": "410", "pose": [-0.20, -0.20, 0.22], "description": "410: Move down to object"},
             {"action": "gripper", "robot": "410", "command": "close", "description": "410: GRIP OBJECT"},
             
             
