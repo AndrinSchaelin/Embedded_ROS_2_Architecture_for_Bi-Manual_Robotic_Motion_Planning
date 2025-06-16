@@ -1,4 +1,13 @@
 #!/usr/bin/env python3
+
+
+# ----------------------------------------------------------------
+# Maintainer: Andrin Schälin & David Streib, aschalin@ethz.ch & dstreib@ethz.ch
+# Last Updated: 2025-06-15
+# Description: Pick and Place script for the UR5e robots
+# ----------------------------------------------------------------
+
+
 import rclpy
 from rclpy.node import Node
 from rclpy.qos import QoSProfile, DurabilityPolicy

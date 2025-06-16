@@ -1,5 +1,14 @@
 # joint_limits.yaml allows the dynamics properties specified in the URDF to be overwritten or augmented as needed
 
+
+# ----------------------------------------------------------------
+# Maintainer: Andrin Schälin & David Streib, aschalin@ethz.ch & dstreib@ethz.ch
+# Last Updated: 2025-06-15
+# Description: Adapted joint limit configuration for both arms. See official UR design parameters.
+# ----------------------------------------------------------------
+
+
+
 # For beginners, we downscale velocity and acceleration limits.
 # You can always specify higher scaling factors (<= 1.0) in your motion requests.  # Increase the values below to 1.0 to always move at maximum speed.
 default_velocity_scaling_factor: 0.1

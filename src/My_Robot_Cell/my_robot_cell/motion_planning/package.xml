@@ -2,9 +2,9 @@
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
   <name>motion_planning</name>
-  <version>0.0.1</version>
-  <description>Motion planning package for UR robot</description>
-  <maintainer email="your-email@example.com">Your Name</maintainer>
+  <version>2.6.9</version>
+  <description>Motion planning package for two UR5e robots</description>
+  <maintainer email="aschalin@ethz.ch">Andrin Schälin</maintainer>
   <license>Apache License 2.0</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
