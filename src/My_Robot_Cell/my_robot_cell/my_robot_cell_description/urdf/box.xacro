@@ -1,6 +1,12 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
   <xacro:macro name="box" params="parent *origin">
+
+  <!-- Maintainer information -->
+  <maintainer email="aschalin@ethz.ch">Andrin Schälin</maintainer>
+  <creator>David Streib</creator>
+  <last_updated>2025-06-16</last_updated>
+  <description>Box for the UR5e robot cell simulating the end effector.</description>
     
     
     

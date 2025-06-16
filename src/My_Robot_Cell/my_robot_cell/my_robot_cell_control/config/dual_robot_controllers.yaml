@@ -1,3 +1,26 @@
+# Dual UR5e Robot Controllers Configuration
+# 
+# Maintainer: David Streib & Andrin Schälin>
+# Last updated: June 13, 2025
+#
+# This configuration file defines controllers for two UR5e robots (409 and 410)
+# in a dual-arm cell. It includes:
+#
+# - Common controller configurations shared between both robots
+# - Robot 409 specific controllers (default robot)
+# - Robot 410 specific controllers
+#
+# The controllers include:
+# - Joint state broadcasting for both robots
+# - Scaled joint trajectory controllers for both arms
+# - Force/torque sensor broadcasting
+# - GPIO and status controllers
+#
+# Both robots can be controlled individually or in a coordinated manner
+# through their respective trajectory controllers.
+
+
+
 controller_manager:
   ros__parameters:
     update_rate: 500  # Hz

@@ -1,6 +1,12 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
   <xacro:macro name="table" params="parent *origin">
+
+  <!-- Maintainer information -->
+  <maintainer email="aschalin@ethz.ch">Andrin Schälin</maintainer>
+  <creator>Andrin Schälin</creator>
+  <last_updated>2025-06-16</last_updated>
+  <description>Table for the UR5e robot cell.</description>
     
     
     

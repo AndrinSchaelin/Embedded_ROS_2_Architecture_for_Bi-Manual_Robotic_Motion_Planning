@@ -1,6 +1,11 @@
 <?xml version="1.0"?>
 <robot name="my_robot_cell" xmlns:xacro="http://ros.org/wiki/xacro">
 
+  <!-- Maintainer information -->
+  <maintainer email="aschalin@ethz.ch">Andrin Schälin</maintainer>
+
+
+
   <!--First, include the macro from our custom description-->
   <xacro:include filename="$(find my_robot_cell_description)/urdf/my_robot_cell_macro.xacro"/>
   <!--The driver already provides a control tag for the UR arm, we can directly include-->

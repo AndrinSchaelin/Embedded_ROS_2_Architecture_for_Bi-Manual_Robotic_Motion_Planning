@@ -2,6 +2,12 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
   <xacro:macro name="safety_wall" params="parent *origin">
+
+  <!-- Maintainer information -->
+  <maintainer email="aschalin@ethz.ch">Andrin Schälin</maintainer>
+  <creator>Andrin Schälin and David Streib</creator>
+  <last_updated>2025-06-16</last_updated>
+  <description>Safety wall for the UR5e robot cell.</description>
     
     <!-- Wall_Wall_Wall -->
     <joint name="base_to_wall_wall_wall" type="fixed">

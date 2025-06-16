@@ -2,9 +2,9 @@
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
   <name>my_robot_cell_control</name>
-  <version>1.0.0</version>
+  <version>1.4.7</version>
   <description>ros2_control setup</description>
-  <maintainer email="Durchdewald@fzi.de">Felix Durchdewald</maintainer>
+  <maintainer email="aschalin@ethz.ch">Andrin Schälin</maintainer>
   <license file="LICENSE">BSD-3-Clause</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>

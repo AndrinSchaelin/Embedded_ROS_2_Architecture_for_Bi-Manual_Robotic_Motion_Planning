@@ -1,3 +1,11 @@
+# ----------------------------------------------------------------
+# Maintainer: Andrin Schälin & David Streib, aschalin@ethz.ch & dstreib@ethz.ch
+# Last Updated: 2025-06-15
+# Description: Launch file for the single UR5e robot.
+# ----------------------------------------------------------------
+
+
+
 from launch_ros.actions import Node
 from launch_ros.parameter_descriptions import ParameterFile
 from launch_ros.substitutions import FindPackageShare
@@ -158,3 +166,5 @@ def generate_launch_description():
             moveit_py_node,
         ]
     )
+
+

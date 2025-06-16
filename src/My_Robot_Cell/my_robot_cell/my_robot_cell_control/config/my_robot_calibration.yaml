@@ -1,3 +1,10 @@
+# ----------------------------------------------------------------
+# Maintainer: Andrin Schälin & David Streib, aschalin@ethz.ch & dstreib@ethz.ch
+# Last Updated: 2025-06-15
+# Description: Calibration file for the UR5e robots. Included from Universal Robot ROS 2 Description.
+# ----------------------------------------------------------------
+
+
 kinematics:
   shoulder:
     x: 0

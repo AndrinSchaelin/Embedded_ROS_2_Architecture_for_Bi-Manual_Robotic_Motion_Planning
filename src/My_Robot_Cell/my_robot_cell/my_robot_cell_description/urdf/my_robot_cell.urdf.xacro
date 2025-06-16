@@ -1,6 +1,12 @@
 <?xml version="1.0"?>
 <robot name="my_robot_cell" xmlns:xacro="http://ros.org/wiki/xacro">
 
+  <!-- Maintainer information -->
+  <maintainer email="aschalin@ethz.ch">Andrin Schälin</maintainer>
+  <creator>Andrin Schälin</creator>
+  <last_updated>2025-06-16</last_updated>
+  <description>UR5e robot cell with table and safety wall.</description>
+
   <xacro:include filename="$(find my_robot_cell_description)/urdf/my_robot_cell_macro.xacro"/>
   <xacro:include filename="$(find my_robot_cell_description)/urdf/table.xacro"/>
   <xacro:include filename="$(find my_robot_cell_description)/urdf/safety_wall.xacro"/>
