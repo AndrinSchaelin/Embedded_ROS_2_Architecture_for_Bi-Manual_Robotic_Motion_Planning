@@ -66,7 +66,10 @@ or on two real UR5e with:
 ros2 launch my_robot_cell_control dual_robot.launch.py use_mock_hardware:=false
 ```
 
+To run and test motion planning, in real or simulated hardware you can use:
 
-
+```
+ros2 run motion_planning pick_place_god.py
+```
 
 
